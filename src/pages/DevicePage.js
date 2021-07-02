@@ -1,10 +1,13 @@
 import React from 'react';
+import {Col, Container} from "react-bootstrap";
 
 const DevicePage = () => {
     return (
-        <div>
-           DevicePage
-        </div>
+        <Container>
+            <Col md={4}>
+
+            </Col>
+        </Container>
     )
 };
 
