@@ -6,10 +6,10 @@ const DevicePage = () => {
     const device =  {id: 1, name: 'note 10 pro', price: 25000, rating: 5, img:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRp2UhedlSGseG2nXT8Ou0EPEde0vEPPNcwog&usqp=CAU' }
     const description = [
         {id:1, title: 'RAM', description: '4Gb'},
-        {id:1, title: 'Camera', description: '12Mpx'},
-        {id:1, title: 'Processor', description: 'Cortex-A75'},
-        {id:1, title: 'Number of cores', description: '4'},
-        {id:1, title: 'Battery', description: '5000mAh'},
+        {id:2, title: 'Camera', description: '12Mpx'},
+        {id:3, title: 'Processor', description: 'Cortex-A75'},
+        {id:4, title: 'Number of cores', description: '4'},
+        {id:5, title: 'Battery', description: '5000mAh'},
     ];
 
     return (
