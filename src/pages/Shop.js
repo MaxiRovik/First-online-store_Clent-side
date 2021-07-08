@@ -13,11 +13,11 @@ const Shop = observer(() => {
     useEffect( () => {
         fetchTypes().then(data => device.setTypes(data));
         fetchBrands().then(data => device.setBrands(data));
-        fetchDevices().then(data => device.setDevices(data.rows));
-        // fetchOneDevice().then(data => device.setDevices(data))
-        }, []
+        fetchDevices().then(data => {
+            device.setDevices(data.rows)
+        console.log( data)})
+        }, []);
 
-    );
         return (
             <Container>
                 <Row className = "mt-3">
