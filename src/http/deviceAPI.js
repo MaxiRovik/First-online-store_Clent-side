@@ -28,7 +28,7 @@ export const createDevice = async(device) => {
     return data
 };
 
-export const fetchDevices = async(typeId, brandId, page, limit = 11) => {
+export const fetchDevices = async(typeId, brandId, limit = 4, page ) => {
     const {data} = await $host.get('api/device', {params: {
         typeId, brandId, page, limit
     }});

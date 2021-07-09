@@ -11,7 +11,8 @@ const [device, setDevice] = useState({info: []});
 const {id} = useParams();
 
 useEffect(()=> {
-    fetchOneDevice(id).then(data => setDevice(data))
+    fetchOneDevice(id).then(data =>{ setDevice(data);
+        console.log(data)})
 }, []);
 
     return (
@@ -44,7 +45,7 @@ useEffect(()=> {
                 </Col>
             </Row>
             <Row className = "d-flex flex-column m-3">
-                <h1>Specifications</h1>
+                <h1>Device Characteristics</h1>
                 {device.info.map((info, index) =>
                     <Row key ={info.id}
                          style = {{background:index % 2 ===0 ? 'Lightgray' : 'transparent', padding:10 }}>

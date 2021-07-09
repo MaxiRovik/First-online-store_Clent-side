@@ -12,15 +12,13 @@ const App = observer(() => {
     const {user} = useContext(Context);
     const [loading, setLoading] = useState(true);
 
-    useEffect( ()=> {
-        setTimeout( ()=>{
+    useEffect(  ()=>{
             check().then(data => {
                 user.setUser(true)
                 user.setIsAuth(true)
             }).finally(() => setLoading(false))
-        }, 3000)
-        }, [])
-        ;
+
+        }, []);
     if (loading) {
         return <Spinner  animation = "border"/>
     }

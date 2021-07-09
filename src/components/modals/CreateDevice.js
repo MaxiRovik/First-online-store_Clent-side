@@ -42,7 +42,7 @@ const CreateDevice = observer(
             formData.append('brandId', device.selectedBrand.id);
             formData.append('typeId', device.selectedType.id);
             formData.append('info', JSON.stringify(info));
-            createDevice(formData).then(data => console.log(data))
+            createDevice(formData).then(data => onHide())
         };
 
         return (
