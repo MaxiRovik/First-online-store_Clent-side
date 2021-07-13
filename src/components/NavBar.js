@@ -2,8 +2,9 @@ import React, {useContext} from 'react';
 import {Button, Container, Nav, Navbar} from "react-bootstrap";
 import {Context} from "../index";
 import {NavLink, useHistory} from "react-router-dom";
-import {ADMIN_ROUTE, LOGIN_ROUTE, SHOP_ROUTE} from "../utils/consts";
+import {ADMIN_ROUTE, BASKET_ROUTE, LOGIN_ROUTE, SHOP_ROUTE} from "../utils/consts";
 import {observer} from "mobx-react-lite";
+
 
 
 const NavBar =  observer(() => {
@@ -31,6 +32,12 @@ const NavBar =  observer(() => {
                                 onClick = {()=> logout()}
                                 className = "ml-2" >
                             Quit
+                        </Button>
+                        <Button  variant="light" className="ml-5"
+                                style={{backgroundRepeat: "no-repeat" , backgroundColor: 'white',
+                                    }}
+                                onClick = {()=> history.push(BASKET_ROUTE)} >
+                                My basket
                         </Button>
 
                     </Nav>

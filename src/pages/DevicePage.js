@@ -1,18 +1,24 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import {Button, Card, Col, Container, Image, Row} from "react-bootstrap";
 import bigStar from "../assets/BigStar.png";
-import {useParams} from 'react-router-dom'
+import {useParams, useHistory} from 'react-router-dom'
 import {fetchOneDevice} from "../http/deviceAPI";
+import {Context} from "../index";
+import {BASKET_ROUTE} from "../utils/consts"
+import {addDeviceToServerBasket, getAll} from "../http/basketAPI";
 
 
 const DevicePage = () => {
 
 const [device, setDevice] = useState({info: []});
 const {id} = useParams();
+const {basket} = useContext(Context);
+const history = useHistory();
+
 
 useEffect(()=> {
     fetchOneDevice(id).then(data =>{ setDevice(data);
-        console.log(data)})
+       })
 }, []);
 
     return (
@@ -38,7 +44,20 @@ useEffect(()=> {
                     <Card className ="d-flex flex-column  align-items-center justify-content-center"
                             style = {{width:300, height:300, fontSize:32, border: '3px solid lightgray'}}>
                         <h3>{device.price}</h3>
-                        <Button variant = {"outline-dark"}>
+                        <Button variant = {"outline-dark"}
+                                onClick ={()=> {console.log(device);
+                                    addDeviceToServerBasket(id)
+                                        .then (data => {
+                                            console.log(data);
+                                            getAll()
+                                                .then(response => {
+                                                    console.log(response)
+                                                basket.setDeviceInBasket(response);
+                                                history.push(BASKET_ROUTE)})
+                                        }
+                                    )
+                                   }}
+                        >
                             Add to basket
                         </Button>
                     </Card>
