@@ -3,7 +3,8 @@ import {makeAutoObservable} from "mobx";
 export default class BasketStore {
     constructor() {
         this._basketId = null;
-        this._devicesInBasket = [];
+        this._devicesId = [];
+        this._devicesInfo = [];
         makeAutoObservable(this)
     }
 
@@ -11,15 +12,23 @@ export default class BasketStore {
         this._basketId = basketId;
     }
 
-    setDeviceInBasket(devices) {
-        this._devicesInBasket  =  devices
+    setDeviceId(devices) {
+        this._devicesId  =  devices
+    }
+
+    setDevicesInfo(info) {
+        this._devicesInfo = [...this._devicesInfo, info]
+    }
+
+    get devicesInfo() {
+        return this._devicesInfo
     }
 
     get basketId() {
         return this._basketId;
     }
-    get devicesInBasket() {
-        return this._devicesInBasket
+    get devicesId() {
+        return this._devicesId
 
     }
 }

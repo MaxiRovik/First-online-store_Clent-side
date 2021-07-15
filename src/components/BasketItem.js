@@ -36,7 +36,7 @@ const BasketItem = observer(({device}) => {
                 <Col md={2}>
                     <Card className =" align-items-center justify-content-center"
                           style = {{width:'150px', height:'100px', fontSize:'16px'}}>
-                        <h3 className = 'w-50'>1000$</h3>
+                        <h3 className = 'w-50'>{device.price}</h3>
 
                     </Card>
 

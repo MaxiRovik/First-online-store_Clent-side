@@ -46,13 +46,13 @@ useEffect(()=> {
                         <h3>{device.price}</h3>
                         <Button variant = {"outline-dark"}
                                 onClick ={()=> {console.log(device);
-                                    addDeviceToServerBasket(id)
+                                    addDeviceToServerBasket(basket.basketId, id)
                                         .then (data => {
                                             console.log(data);
                                             getAll()
                                                 .then(response => {
-                                                    console.log(response)
-                                                basket.setDeviceInBasket(response);
+                                                    console.log(response);
+                                                basket.setDeviceId(response);
                                                 history.push(BASKET_ROUTE)})
                                         }
                                     )

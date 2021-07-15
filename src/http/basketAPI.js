@@ -6,8 +6,8 @@ export const createBasket = async(userId) => {
     return data
 };
 
-export const addDeviceToServerBasket = async(id) => {
-    const {data} = await $host.post('api/basket/' +id, id);
+export const addDeviceToServerBasket = async(basketId,deviceId) => {
+    const {data} = await $host.post('api/basket/' +deviceId, {basketId, deviceId});
 
     return data
 };
