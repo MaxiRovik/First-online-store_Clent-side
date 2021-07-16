@@ -17,7 +17,7 @@ export default class BasketStore {
     }
 
     setDevicesInfo(info) {
-        this._devicesInfo = [...this._devicesInfo, info]
+      this._devicesInfo = info
     }
 
     get devicesInfo() {

@@ -17,7 +17,7 @@ const history = useHistory();
 
 
 useEffect(()=> {
-    fetchOneDevice(id).then(data =>{ setDevice(data);
+    fetchOneDevice(id).then(data => { setDevice(data);
        })
 }, []);
 
@@ -45,18 +45,17 @@ useEffect(()=> {
                             style = {{width:300, height:300, fontSize:32, border: '3px solid lightgray'}}>
                         <h3>{device.price}</h3>
                         <Button variant = {"outline-dark"}
-                                onClick ={()=> {console.log(device);
+                                onClick ={()=> {
                                     addDeviceToServerBasket(basket.basketId, id)
                                         .then (data => {
-                                            console.log(data);
-                                            getAll()
-                                                .then(response => {
-                                                    console.log(response);
-                                                basket.setDeviceId(response);
-                                                history.push(BASKET_ROUTE)})
+                                            console.log(data)
+                                           if (data) {
+                                               history.push(BASKET_ROUTE)}
+                                               })
+
                                         }
-                                    )
-                                   }}
+
+                                   }
                         >
                             Add to basket
                         </Button>

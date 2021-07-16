@@ -19,6 +19,7 @@ const Shop = observer(() => {
         fetchDevices(null, null, itemsOnPage , 1).then(data => {
             device.setDevices(data.rows);
             device.setTotalCount(data.count);
+
         console.log(data)})
         }, []);
 

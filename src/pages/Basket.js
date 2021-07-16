@@ -1,33 +1,37 @@
-import React, { useEffect, useContext} from 'react';
+import React, { useEffect, useContext, useState} from 'react';
 import {Button} from "react-bootstrap";
 import {Context} from "../index";
 import BasketItem from "../components/BasketItem";
 import {fetchOneDevice} from "../http/deviceAPI";
 import { observer } from "mobx-react-lite"
+import {getAll} from "../http/basketAPI";
 
 
-const Basket = observer(() => {
+const Basket = observer( () => {
     const {basket} = useContext(Context);
 
-    const selectedDevicesId = basket.devicesId.map(selectedDevice => {
-        return   selectedDevice.deviceId
-    });
-
     useEffect(() => {
-        selectedDevicesId.map(id => {
-            return fetchOneDevice(id).then(data => {
-                    basket.setDevicesInfo(data);
-            })
+        getAll().then(response => {
+            basket.setDeviceId(response)
         });
-    }, []);
+            let arr =[];
+
+            basket.devicesId.forEach(id => {
+                fetchOneDevice( id.deviceId).then(data => {
+                    arr.push(data);
+                    basket.setDevicesInfo(arr);
+                });
+            });
+        }, []);
+
 
     return (
-        <div style ={{marginLeft:"10%"}}>
+        <div style ={{marginLeft:"10%",  marginBottom: "20px"}}>
             <div>
                 {basket.devicesInfo.map((item, i) => {
-                    return <BasketItem key = {i} device = {item}/>
+                        return <BasketItem key = {i} device = {item}/>
                 })
-                }
+                    }
             </div>
 
             <hr/>
