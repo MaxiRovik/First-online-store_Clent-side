@@ -10,18 +10,20 @@ import {getAll} from "../http/basketAPI";
 const Basket = observer( () => {
     const {basket} = useContext(Context);
 
+    const getItemInfo = () => {
+    let arr =[];
+    basket.devicesId.forEach(id => {
+        fetchOneDevice( id.deviceId).then(data => {
+            arr.push(data);
+            basket.setDevicesInfo(arr);
+        });
+    });
+};
+
     useEffect(() => {
         getAll().then(response => {
             basket.setDeviceId(response)
-        });
-            let arr =[];
-
-            basket.devicesId.forEach(id => {
-                fetchOneDevice( id.deviceId).then(data => {
-                    arr.push(data);
-                    basket.setDevicesInfo(arr);
-                });
-            });
+        }).then(() => getItemInfo())
         }, []);
 
 

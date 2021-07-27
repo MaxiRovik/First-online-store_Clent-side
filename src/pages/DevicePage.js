@@ -48,13 +48,11 @@ useEffect(()=> {
                                 onClick ={()=> {
                                     addDeviceToServerBasket(basket.basketId, id)
                                         .then (data => {
-                                            console.log(data)
                                            if (data) {
-                                               history.push(BASKET_ROUTE)}
+                                                history.push(BASKET_ROUTE)
+                                              }
                                                })
-
                                         }
-
                                    }
                         >
                             Add to basket
