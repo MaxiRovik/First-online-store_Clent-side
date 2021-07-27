@@ -13,7 +13,9 @@ const Basket = observer( () => {
     const getItemInfo = () => {
     let arr =[];
     basket.devicesId.forEach(id => {
+
         fetchOneDevice( id.deviceId).then(data => {
+            console.log(data)
             arr.push(data);
             basket.setDevicesInfo(arr);
         });

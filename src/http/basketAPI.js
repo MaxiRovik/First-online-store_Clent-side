@@ -17,3 +17,10 @@ export const getAll = async() => {
     localStorage.setItem('deviceInBasket', data);
     return data
 };
+
+export const deleteDevice = async( deviceId) => {
+
+    const {response} = await $host.delete('api/basket/' +deviceId,  );
+
+    return response
+};

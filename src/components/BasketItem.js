@@ -1,22 +1,26 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {useHistory} from 'react-router-dom';
 
 import {observer} from "mobx-react-lite"
 import {Button, Card, Col, Container, Image, Row} from "react-bootstrap";
 import {DEVICE_ROUTE} from "../utils/consts";
+import {deleteDevice} from "../http/basketAPI";
+import {Context} from "../index";
+
 
 
 
 
 
 const BasketItem = observer(({device}) => {
+    const {basket} = useContext(Context);
     const history = useHistory();
     return(
         <Container style ={{width:"80%", marginBottom: "10px",cursor: 'pointer' }}
-                   className = "m-5 "
-                   onClick = {() => history.push(DEVICE_ROUTE + '/' + device.id)}>
+                   className = "m-5 ">
             <Row >
-                <Col md={3}>
+                <Col md={3}
+                     onClick = {() => history.push(DEVICE_ROUTE + '/' + device.id)}>
                     <Image width = {120} height = {120} src = {process.env.REACT_APP_API_URL + device.img}>
 
                     </Image>
@@ -50,7 +54,14 @@ const BasketItem = observer(({device}) => {
                 </Col>
 
                 <Col md={2} className = "mt-lg-5">
-                    <Button variant = "outline-danger">
+                    <Button  variant = "outline-danger"
+                             onClick ={() => {
+                                 console.log(device.id)
+                                 deleteDevice(device.id ).then(data => {
+                                     console.log(data)
+                                 })
+                                }}
+                    >
                         Delete
                     </Button>
                 </Col>
